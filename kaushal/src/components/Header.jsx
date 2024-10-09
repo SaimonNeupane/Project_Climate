@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Nav from './Nav'
 import { Button } from './ui/button'
+import Mobilenav from './Mobilenav'
 
 const Header = () => {
   return (
@@ -17,7 +18,9 @@ const Header = () => {
             <Button>Contact US</Button>
           </Link>
         </div>
-        <div className="xl:hidden">Mobile</div>
+        <div className="xl:hidden text-black font-bold " style={{
+          fontSize:'30px'
+        }} > <Mobilenav/></div>
       </div>
 
     </header>

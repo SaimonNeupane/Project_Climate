@@ -21,7 +21,10 @@ export default function RootLayout({ children }) {
         className={`${JetBrainsMono.variable}  antialiased`}
       >
 
-        <Header/>
+        <Header style={{
+          position:'fixed',
+          zIndex:'1000px'
+        }}/>
         {children}
       </body>
     </html>

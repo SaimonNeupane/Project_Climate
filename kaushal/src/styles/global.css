@@ -18,6 +18,10 @@
     animation: ease-in;
     transform: scale(1.10);
 }
+.lgHollow{
+    font-size: 60px;
+    font-weight: 840;
+}
 
 
 

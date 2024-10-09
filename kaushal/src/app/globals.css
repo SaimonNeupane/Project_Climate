@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer base {
   body{
-    @apply font-primary bg-primary text-white;
+    @apply font-primary bg-primary text-black;
   }
 }
 
