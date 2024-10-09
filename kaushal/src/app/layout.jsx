@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${JetBrainsMono.variable}  antialiased`}
       >
+
         <Header/>
         {children}
       </body>

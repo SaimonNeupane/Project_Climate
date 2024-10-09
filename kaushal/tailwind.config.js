@@ -8,8 +8,11 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			textColor: {
+				DEFAULT: '#000000', // Set default text color to black
+			  },
 			colors:{
-				primary:'#1c1c22',
+				primary:'#ffffff',
 				accent:{
 					DEFAILT:'#00ff99',
 					hover:"#00e187"

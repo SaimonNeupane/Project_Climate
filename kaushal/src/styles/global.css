@@ -1,0 +1,23 @@
+.Hollow{
+    font-size: 100px;
+    font-weight: 800;
+}
+.Hollow:hover{
+    -webkit-text-stroke: 2px black;
+    color:transparent;
+    animation: ease-in;
+    transform: scale(1.10);
+}
+.smallHollow{
+    font-size: 80px;
+    font-weight: 800;
+}
+.smallHollow:hover{
+    -webkit-text-stroke: 2px black;
+    color:transparent;
+    animation: ease-in;
+    transform: scale(1.10);
+}
+
+
+

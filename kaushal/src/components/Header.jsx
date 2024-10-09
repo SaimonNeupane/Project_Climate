@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="py-8 xl:py-12 text-white">
       <div className="container flex justify-between items-center " >
-        <Link href='/ '>
+        <Link href='/ ' className="text-black text-lg">
           {/* LOGO */}
           Climate Care Network
         </Link>

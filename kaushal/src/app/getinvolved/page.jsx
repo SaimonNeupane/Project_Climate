@@ -2,7 +2,7 @@ import React from 'react'
 
 const Getinvolved = () => {
   return (
-    <div>Getinvolved</div>
+    <div className="text-black" >Getinvolved</div>
   )
 }
 
