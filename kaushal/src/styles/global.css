@@ -1,5 +1,5 @@
 .Hollow {
-    font-size: 100px;
+    font-size: 5vw; /* Default size */
     font-weight: 800;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .smallHollow {
-    font-size: 70px;
+    font-size: 4vw;
     font-weight: 800;
 }
 
@@ -23,27 +23,55 @@
 }
 
 .lgHollow {
-    font-size: 60px;
+    font-size: 3.5vw; 
     font-weight: 840;
 }
 
 
-@media (max-width: 768px) {
+ @media (min-width: 1200px) {
     .Hollow {
-        font-size: 70px;
+        font-size: 90px; 
     }
     .smallHollow {
-        font-size: 50px;
+        font-size: 60px; 
+    }
+    .lgHollow {
+        font-size: 50px; 
+    }
+} 
+
+@media (max-width: 1200px) {
+    .Hollow {
+        font-size: 75px; 
+    }
+    .smallHollow {
+        font-size: 45px; 
+    }
+    .lgHollow {
+        font-size: 35px; 
+    }
+} 
+
+
+@media (max-width: 768px) {
+    .Hollow {
+        font-size: 80px; 
+    }
+    .smallHollow {
+        font-size: 40px; 
     }
 }
 
 @media (max-width: 480px) {
     .Hollow {
-        font-size: 50px;
+        font-size: 16vw; 
     }
     .smallHollow {
-        font-size: 35px;
+        font-size: 10vw; 
     }
 }
 
-
+.question{
+    font-size: 5vw;
+    color:#56328C;
+}
