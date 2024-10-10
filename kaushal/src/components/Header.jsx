@@ -6,11 +6,13 @@ import Mobilenav from './Mobilenav'
 
 const Header = () => {
   return (
-    <header className="py-8 xl:py-12 text-white">
-      <div className="container flex justify-between items-center " >
-        <Link href='/ ' className="text-black text-lg">
+    <header className="py-8 xl:py-12 text-white border-b-2 border-gray ">
+      <div className="container flex justify-between items-center h-4  " >
+        <Link href='/ ' >
           {/* LOGO */}
-          Climate Care Network
+          <span className="text-2xl text-green-800 hidden lg:block xl:block" >Climate Care Network</span>
+          <span className="text-2xl text-green-800 block lg:hidden xl:hidden " >CCN</span>
+
         </Link>
         <div className="hidden xl:flex items-center gap-8  ">
           <Nav />
