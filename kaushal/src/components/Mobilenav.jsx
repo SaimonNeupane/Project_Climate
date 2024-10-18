@@ -44,8 +44,8 @@ const Mobilenav = () => {
                     <div className={`mt-40 ml-32 flex flex-col gap-10 `} >
                         {Links.map((link, index) => {
                             return (
-                                <span>
-                                    <Link href={link.path} key={index} className={`${Pathname === link.path ? "text-accent-DEFAILT border-b-2 " : ""} border-accent-DEFAILT hover:text-accent-hover transition-all text-black inline-block`}
+                                <span key={index}>
+                                    <Link href={link.path}  className={`${Pathname === link.path ? "text-accent-DEFAILT border-b-2 " : ""} border-accent-DEFAILT hover:text-accent-hover transition-all text-black inline-block`}
 
                                     >
                                         <span>{link.name}</span>
