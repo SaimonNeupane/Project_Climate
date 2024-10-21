@@ -88,8 +88,21 @@
 
 
 }
+.LearnMore1 {
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: #60bb46;
+    transition: background-color 0.3s ease;
+
+
+}
 
 .LearnMore:hover {
+    background-color: transparent;
+    border: 3px solid #60bb46;
+}
+.LearnMore1:hover {
     background-color: #f0f0f0;
     border: 3px solid #60bb46;
 }

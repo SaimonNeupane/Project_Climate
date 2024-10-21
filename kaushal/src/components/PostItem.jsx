@@ -13,7 +13,7 @@ const PostItem = () => {
         },
         {
             id: '2',
-            thumbnail: '/i',
+            thumbnail: '/images/grasslad.jpg',
             category: 'technology',
             title: 'Exploring the latest adfmad sifnaoisdfoi jasoidfj oasj dvancements in AI.',
             desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus facilis incidunt.',
@@ -88,7 +88,7 @@ const PostItem = () => {
     return (
         <>
             {posts.map((post) => (
-                <Link href={`/Blogs/${post.title}`} key={post.id} className='pb-8 ' >
+                <Link href={`/Blogs/${post.id}`} key={post.id} className='pb-8 ' >
                     <Post thumbnail={post.thumbnail} authorID={post.authorID} title={post.title} />
                 </Link>
             ))}

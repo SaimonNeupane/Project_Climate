@@ -29,9 +29,13 @@ const Footer = () => {
       name: 'Blogs',
       path: '/blogs'
     },
+    {
+      name:'Contact Us',
+      path:'/contacts'
+    }
   ];
   return (
-    <footer>
+    <footer >
       <div className="border-b-2 border-green-500">
         
       </div>
