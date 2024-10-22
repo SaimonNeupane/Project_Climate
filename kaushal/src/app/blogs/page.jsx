@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Footer from '@/components/Footer'
 import PostItem from '@/components/PostItem'
