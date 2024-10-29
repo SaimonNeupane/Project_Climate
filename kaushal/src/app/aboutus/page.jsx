@@ -58,7 +58,7 @@ const page = () => {
   
   return (
     <main>
-      <div className='relative xl:h-full xl:w-full h-[500px] w-full'>
+      <div className='relative xl:h-full xl:w-full h-[500px] w-full overflow-hidden'>
         <img src="/images/Aboutus.jpg" alt="" className='w-full h-full object-cover zoom-effect' />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <span className='text-white  text-[clamp(1rem,4vw,3.5rem)] lg:text-[clamp(0.2rem,5vw,2.5rem)] mb-2'>
