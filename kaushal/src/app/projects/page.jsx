@@ -21,7 +21,7 @@ const projectsData = [
     description: 'A brief description of Project Three.',
     image: '/projects/projects.jpg',
   },
-  // Add more projects as needed
+  
 ];
 
 const Page = () => {
@@ -41,7 +41,7 @@ const Page = () => {
 
         <div className="space-y-20">
           {projectsData.map((project, index) => (
-            <Link href={`/projects/${project.id}`} key={project.id} className="block hover:shadow-lg transition-shadow duration-300">
+            <Link href={`/projects/${project.id}`} key={project.id} className="block hover:shadow-lg transition-shadow duration-300 mb-4">
               <div
                 className={`flex flex-col ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'
@@ -50,7 +50,7 @@ const Page = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full lg:w-1/2 h-64 object-cover"
+                  className="w-full lg:w-1/2 h-64 object-cover mb-8"
                 />
                 <div className="lg:w-1/2 p-8">
                   <h2 className="text-3xl font-semibold mb-4 text-gray-800">{project.title}</h2>
