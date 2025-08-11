@@ -17,6 +17,9 @@ connectDatabase();
 app.get("/", (req, res) => {
   res.send("Server has started");
 });
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Welcome to the Climate Project API" });
+});
 
 app.use("/", emailChecker);
 
