@@ -1,10 +1,11 @@
 import express from "express";
-import connectDatabase from "./db.js";
+import connectDatabase from "../db.js"; // note: adjust path if needed
 import { configDotenv } from "dotenv";
 import emailChecker from "../routes/EmailRoute.js";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import cors from "cors";
+import serverless from "serverless-http";
 
 configDotenv();
 
@@ -14,15 +15,20 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 connectDatabase();
-app.get("/", (req, res) => {
-  res.send("Server has started");
-});
+
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to the Climate Project API" });
 });
 
 app.use("/", emailChecker);
 
-app.listen(5000, () => {
-  console.log("server currently running on port 5000");
-});
+// ✅ For Vercel
+export const handler = serverless(app);
+
+// ✅ For Local
+// if (process.env.NODE_ENV !== "production") {
+//   const PORT = process.env.PORT || 5000;
+//   app.listen(PORT, () => {
+//     console.log(`Server running locally on port ${PORT}`);
+//   });
+// }
