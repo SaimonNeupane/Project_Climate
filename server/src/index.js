@@ -22,6 +22,6 @@ app.get("/", (req, res) => {
 
 app.use("/email/", emailChecker);
 
-app.listen(5000, () => {
+app.listen(5000, "0.0.0.0", () => {
   console.log("server currently running on port 5000");
 });

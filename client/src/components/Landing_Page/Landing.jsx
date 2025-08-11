@@ -49,7 +49,7 @@ const EnvironmentalWebsite = () => {
             
             <FadeInElement delay={400}>
               <p className="text-gray-500 text-lg leading-relaxed max-w-lg">
-                Internet contributes to 3.7% of global carbon emissions, more than aviation. Audit your website for a greener internet.
+              Climate change affects every community, but together we can change the story. Act now for a cleaner, fairer, and more resilient future.
               </p>
             </FadeInElement>
             
