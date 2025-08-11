@@ -1,8 +1,11 @@
 'use client'
 import React, { useState } from 'react';
 import { FaFacebook, FaInstagram, FaTelegram, FaLinkedin } from 'react-icons/fa';
+import { subscriptionAPI } from '../utils/api.js';
+import { toast } from 'sonner';
 
 const Footer = () => {
+  
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -15,23 +18,34 @@ const Footer = () => {
   ];
   
   const aboutLinks = [
-    { name: 'Why Us', path: '/why-us' },
     { name: 'About', path: '/aboutus' },
-    { name: 'CSR', path: '/csr' }
   ];
   
-  const resourceLinks = [
-    { name: 'Company Policy', path: '/policy' },
-    { name: 'Sustainable Tourism Policy Guidelines', path: '/sustainability' },
-    { name: 'Climate Blog', path: '/blogs' },
-    { name: 'FAQs', path: '/faqs' }
-  ];
-
-  const handleNewsletterSignup = (e) => {
+  // const resourceLinks = [
+  //   { name: 'Company Policy', path: '/policy' },
+  //   { name: 'Sustainable Tourism Policy Guidelines', path: '/sustainability' },
+  //   { name: 'Climate Blog', path: '/blogs' },
+  //   { name: 'FAQs', path: '/faqs' }
+  // ];
+    const handleSubscription = async (e) => {
     e.preventDefault();
-    console.log('Newsletter signup:', { firstName, lastName, email });
-    // Handle newsletter signup logic here
-  };
+    console.log(email);
+
+    const responsePromise = subscriptionAPI(email);
+
+    toast.promise(responsePromise, {
+      loading: "Sending request...",
+      success: "Successfully subscribed!",
+      error: (err) => {
+        if (err?.status === 409) {
+          return "Already subscribed";
+        }
+        return "Something went wrong";
+      },
+    });}
+
+ 
+
 
   return (
     <footer className="relative bg-gradient-to-b from-green-50 to-green-100 overflow-hidden">
@@ -101,12 +115,12 @@ const Footer = () => {
           {/* Logo and Contact Info */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <img src="/images/Logo.png" alt="Climate Care Network" className="h-16 mb-4" />
+              <img src="/images/Logo.png" alt="Climate Care Network" className="h-[200px] mb-4" />
               <div className="space-y-1 text-gray-700">
-                <p>PO Box: 10987</p>
-                <p>Biratnagar, Nepal</p>
-                <p>+977-01-4700563, +977-01-4700066</p>
-                <p>Whatsapp: +977 9851167070</p>
+                {/* <p>PO Box: 10987</p> */}
+                <p>Tokha-11,Kathmandu,Nepal</p>
+                <p>+977-9851042306,+977-9746885199</p>
+                <p>Whatsapp: +977-9851042306 </p>
                 <a 
                   href="mailto:climatecarenetwork@gmail.com" 
                   className="text-green-600 hover:text-green-800 transition-colors"
@@ -117,7 +131,7 @@ const Footer = () => {
             </div>
             
             {/* Awards/Recognition */}
-            <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 inline-block">
+            {/* <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 inline-block">
               <div className="text-center">
                 <div className="text-xs text-gray-600 mb-1">Climate Action</div>
                 <div className="text-sm font-semibold text-gray-800">Excellence Awards</div>
@@ -125,7 +139,7 @@ const Footer = () => {
                   <span className="text-white text-xs font-bold">2024</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           
           {/* General Links */}
@@ -165,21 +179,8 @@ const Footer = () => {
           {/* Newsletter Signup */}
           <div>
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Stay Updated</h3>
-            <form onSubmit={handleNewsletterSignup} className="space-y-3">
-              <input
-                type="text"
-                placeholder="First name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className="w-full px-3 py-2 bg-white/70 border border-green-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              />
-              <input
-                type="text"
-                placeholder="Last name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                className="w-full px-3 py-2 bg-white/70 border border-green-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              />
+            <form onSubmit={handleSubscription} className="space-y-3">
+              
               <input
                 type="email"
                 placeholder="Email address"
@@ -198,7 +199,7 @@ const Footer = () => {
         </div>
         
         {/* Resources Section */}
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Resources</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {resourceLinks.map((link, index) => (
@@ -211,7 +212,7 @@ const Footer = () => {
               </a>
             ))}
           </div>
-        </div>
+        </div> */}
         
         {/* Social Media */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-green-200">
@@ -222,18 +223,16 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-4">
-            <a href="#" className="text-green-600 hover:text-green-800 transition-colors p-2 bg-white/70 rounded-full">
-              <FaFacebook size={20} />
+            <a href="https://www.facebook.com/profile.php?id=61554565955464 " className="text-blue-600 hover:text-green-800 transition-colors p-2 bg-white/70 rounded-full">
+              <FaFacebook size={35} />
             </a>
-            <a href="#" className="text-green-600 hover:text-green-800 transition-colors p-2 bg-white/70 rounded-full">
-              <FaInstagram size={20} />
+            <a href="https://www.instagram.com/climate_care_network/" className="text-pink-600 hover:text-green-800 transition-colors p-2 bg-white/70 rounded-full">
+              <FaInstagram size={35} />
             </a>
-            <a href="#" className="text-green-600 hover:text-green-800 transition-colors p-2 bg-white/70 rounded-full">
-              <FaLinkedin size={20} />
+            <a href="https://www.linkedin.com/company/climatecarenetwork/?viewAsMember=true" className="text-blue-600 hover:text-green-800 transition-colors p-2 bg-white/70 rounded-full">
+              <FaLinkedin size={35} />
             </a>
-            <a href="#" className="text-green-600 hover:text-green-800 transition-colors p-2 bg-white/70 rounded-full">
-              <FaTelegram size={20} />
-            </a>
+         
           </div>
         </div>
       </div>

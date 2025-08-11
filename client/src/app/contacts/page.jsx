@@ -2,13 +2,15 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Send, Leaf, Globe, Recycle } from 'lucide-react';
 import Footer from '@/components/Footer';
+import { messageAPI } from '@/utils/api';
+import { toast } from 'sonner';
 
 const EnvironmentalContact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
-    message: ''
+    age: '',
+    inspiration: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,18 +22,25 @@ const EnvironmentalContact = () => {
     });
   };
 
-  const handleSubmit = async () => {
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      alert('Please fill in all fields');
-      return;
+   const handleMessageSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+
+    const responsePromise = messageAPI(formData);
+
+    toast.promise(responsePromise, {
+      loading: "Sending request...",
+      success: "Successfully submitted the details!",
+      error: "Submission failed. Please try again.",
+    });
+
+    try {
+      await responsePromise;
+      setVolunteerData({ name: "", email: "", age: "", inspiration: "" });
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Volunteer form submission failed:", error);
     }
-    
-    setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    alert('Thank you for your message! We\'ll get back to you soon.');
   };
 
   return (
@@ -69,8 +78,8 @@ const EnvironmentalContact = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Visit Our Green Office</h3>
-                    <p className="text-gray-600 text-lg">123 Eco-Friendly Boulevard</p>
-                    <p className="text-gray-600 text-lg">Sustainable City, Earth 12345</p>
+                    <p className="text-gray-600 text-lg">Tokha-11,Kathmandu,Nepal</p>
+             
                   </div>
                 </div>
               </div>
@@ -82,8 +91,8 @@ const EnvironmentalContact = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Call Us</h3>
-                    <p className="text-gray-600 text-lg">+1 (555) ECO-EARTH</p>
-                    <p className="text-gray-600">Mon-Fri: 9AM-6PM</p>
+                    <p className="text-gray-600 text-lg">+977-9851042306,+977-9746885199</p>
+                   
                   </div>
                 </div>
               </div>
@@ -95,7 +104,7 @@ const EnvironmentalContact = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Email Us</h3>
-                    <p className="text-gray-600 text-lg">hello@greenfuture.org</p>
+                    <p className="text-gray-600 text-lg">climatecarenetwork@gmail.com</p>
                     <p className="text-gray-600">We respond within 24 hours</p>
                   </div>
                 </div>
@@ -103,15 +112,7 @@ const EnvironmentalContact = () => {
             </div>
 
             {/* Mission Statement */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-700 rounded-3xl p-8 text-white shadow-2xl">
-              <div className="flex items-center space-x-4 mb-4">
-                <Leaf className="w-8 h-8 animate-pulse" />
-                <h3 className="text-2xl font-bold">Our Mission</h3>
-              </div>
-              <p className="text-green-100 text-lg leading-relaxed">
-                Together, we're building a world where technology and nature coexist harmoniously. Every conversation is a step toward a more sustainable tomorrow.
-              </p>
-            </div>
+           
           </div>
 
           {/* Contact Form */}
@@ -148,18 +149,18 @@ const EnvironmentalContact = () => {
               <div className="relative">
                 <input
                   type="text"
-                  name="subject"
-                  value={formData.subject}
+                  name="age"
+                  value={formData.age}
                   onChange={handleInputChange}
                   className="w-full px-4 py-4 text-lg border-2 border-green-200 rounded-2xl focus:border-green-500 focus:ring-4 focus:ring-green-100 outline-none transition-all duration-300 bg-white/70"
-                  placeholder="Subject"
+                  placeholder="age"
                 />
               </div>
 
               <div className="relative">
                 <textarea
-                  name="message"
-                  value={formData.message}
+                  name="inspiration"
+                  value={formData.inspiration}
                   onChange={handleInputChange}
                   rows={6}
                   className="w-full px-4 py-4 text-lg border-2 border-green-200 rounded-2xl focus:border-green-500 focus:ring-4 focus:ring-green-100 outline-none transition-all duration-300 resize-none bg-white/70"
@@ -168,7 +169,7 @@ const EnvironmentalContact = () => {
               </div>
 
               <button
-                onClick={handleSubmit}
+                onClick={handleMessageSubmit}
                 disabled={isSubmitting}
                 className={`w-full py-4 px-8 text-lg font-bold text-white rounded-2xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-3 ${
                   isSubmitting 

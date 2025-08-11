@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Menu, X, Leaf, Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +23,7 @@ const Header = () => {
 
   const navigationItems = [
     { label: "Home", href: "/" },
-    { label: "About", href: "/aboutus" },
+    { label: "About us", href: "/aboutus" },
     { label: "Projects", href: "/projects" },
     { label: "Blog", href: "/blogs" },
     { label: "Contact", href: "/contacts" },
@@ -39,7 +41,7 @@ const Header = () => {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 cursor-pointer" onClick={()=>router.push('/')} >
               <div className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r rounded-full shadow-lg border-2 border-green-500">
                 <img src="images/Logo.png" alt="" />
               </div>

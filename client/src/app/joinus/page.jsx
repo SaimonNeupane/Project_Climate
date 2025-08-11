@@ -17,10 +17,15 @@ import {
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import axios from "axios";
-import { volunteerAPI ,memberAPI} from "@/utils/api";
+import { volunteerAPI, memberAPI, subscriptionAPI } from "@/utils/api";
+import Footer from "@/components/Footer";
+
 
 export default function GetInvolved() {
   const router = useRouter();
+  const handleDonate=()=>{
+    router.push('/contacts')
+  }
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
@@ -30,41 +35,82 @@ export default function GetInvolved() {
     age: "",
     inspiration: "",
   });
-  const [email, setemail] = useState("");
+  const [email, setEmail] = useState("");
+  const [subscriptionEmail, setSubscriptionEmail] = useState("");
+  
 
   const handleVolunteerSubmit = async (e) => {
-  e.preventDefault();
-  console.log(volunteerData);
-
-  const responsePromise = volunteerAPI(volunteerData);
-  
-  toast.promise(responsePromise, {
-    loading: 'Sending request...',
-    success: 'Successfully submitted the details!',
-    error: 'Submission failed. Please try again.'
-  });
-
-  try {
-    await responsePromise;
-    setVolunteerData({ name: "", email: "", age: "", inspiration: "" });
-    setIsModalOpen(false);
-  } catch (error) {
-    console.error("Volunteer form submission failed:", error);
-  }
-};
-
-
-  const handleMemberSubmit = async(e) => {
     e.preventDefault();
-    console.log(email)
-    const response = memberAPI(email)
-    toast.promise(response,{
-      loading:"sending request",
-      success:"We will try to reach you as soon as Possible!!",
-      error:"Something went wrong!"
-    })
-    setemail("");
-    setIsModalOpen(false);
+    console.log(volunteerData);
+
+    const responsePromise = volunteerAPI(volunteerData);
+
+    toast.promise(responsePromise, {
+      loading: "Sending request...",
+      success: "Successfully submitted the details!",
+      error: "Submission failed. Please try again.",
+    });
+
+    try {
+      await responsePromise;
+      setVolunteerData({ name: "", email: "", age: "", inspiration: "" });
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Volunteer form submission failed:", error);
+    }
+  };
+
+  const handleMemberSubmit = async (e) => {
+    e.preventDefault();
+    console.log(email);
+
+    const responsePromise = memberAPI(email);
+    console.log(responsePromise);
+
+    toast.promise(responsePromise, {
+      loading: "Sending request...",
+      success: "We will try to reach you as soon as possible!!",
+      error: (err) => {
+        if (err?.status === 409) {
+          return "Already subscribed";
+        }
+        return "Something went wrong";
+      },
+    });
+    console.log(responsePromise);
+
+    try {
+      await responsePromise;
+      setEmail("");
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Member form submission failed:", error);
+    }
+  };
+
+  const handleSubscription = async (e) => {
+    e.preventDefault();
+    console.log(subscriptionEmail);
+
+    const responsePromise = subscriptionAPI(subscriptionEmail);
+
+    toast.promise(responsePromise, {
+      loading: "Sending request...",
+      success: "Successfully subscribed!",
+      error: (err) => {
+        if (err?.status === 409) {
+          return "Already subscribed";
+        }
+        return "Something went wrong";
+      },
+    });
+
+    try {
+      await responsePromise;
+      setSubscriptionEmail("");
+    } catch (error) {
+      console.error("Subscription failed:", error);
+    }
   };
 
   return (
@@ -112,8 +158,15 @@ export default function GetInvolved() {
               <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button className="group border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-green-600 transform hover:scale-105 transition-all duration-300">
-              <Play className="inline-block mr-2 w-5 h-5" />
-              Watch Our Story
+              <a
+                href="https://www.facebook.com/profile.php?id=61554565955464"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <Play className="inline-block mr-2 w-5 h-5" />
+                Watch Our Story
+              </a>
             </button>
           </div>
         </div>
@@ -165,17 +218,26 @@ export default function GetInvolved() {
               </div>
 
               <div className="space-y-4">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl">
+                <form
+                  onSubmit={handleSubscription}
+                  className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl"
+                >
                   <input
                     type="email"
                     placeholder="Enter your email address"
+                    value={subscriptionEmail}
+                    onChange={(e) => setSubscriptionEmail(e.target.value)}
                     className="w-full p-3 rounded-lg border border-green-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                    required
                   />
-                  <button className="w-full mt-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 rounded-lg hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <button
+                    type="submit"
+                    className="w-full mt-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 rounded-lg hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
                     Subscribe Now
                     <ChevronRight className="inline-block ml-2 w-5 h-5" />
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -204,7 +266,7 @@ export default function GetInvolved() {
               </p>
 
               <div className="space-y-4">
-                <button className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-lg hover:from-emerald-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <button onClick={handleDonate} className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-lg hover:from-emerald-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                   <Heart className="inline-block mr-2 w-5 h-5" />
                   Donate Now
                 </button>
@@ -373,7 +435,7 @@ export default function GetInvolved() {
                       type="email"
                       className="w-full p-3 text-lg rounded-lg border border-teal-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
                       value={email}
-                      onChange={(e) => setemail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                     />
                   </div>
@@ -417,6 +479,7 @@ export default function GetInvolved() {
           </div>
         </div>
       </div>
+      <Footer/>
 
       <style jsx global>{`
         @keyframes float {

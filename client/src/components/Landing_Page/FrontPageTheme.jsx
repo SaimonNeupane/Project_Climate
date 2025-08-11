@@ -14,9 +14,11 @@ import {
   Mountain,
   Recycle
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const EnvironmentalFacts = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const router=useRouter();
 
   const facts = [
     // Row 1
@@ -44,37 +46,40 @@ const EnvironmentalFacts = () => {
       subtitle: "Already Degraded",
       description: "More than half of the world's topsoil has been lost in the last 150 years, severely affecting global food security."
     },
-    {
-      id: 4,
-      icon: <Brain className="w-12 h-12" />,
-      title: "Nature's Brain Boost",
-      stat: "Larger Brain Volume",
-      subtitle: "From Green Spaces",
-      description: "Children raised near green spaces have greater volume in brain regions linked to memory, attention, and emotional regulation."
-    },
-    // Row 2
+    // {
+    //   id: 4,
+    //   icon: <Brain className="w-12 h-12" />,
+    //   title: "Nature's Brain Boost",
+    //   stat: "Larger Brain Volume",
+    //   subtitle: "From Green Spaces",
+    //   description: "Children raised near green spaces have greater volume in brain regions linked to memory, attention, and emotional regulation."
+    // },
+    // // Row 2
       
   
-    // Row 3
+    // // Row 3
    
     
-    {
-      id: 11,
-      icon: <Mountain className="w-12 h-12" />,
-      title: "Species Extinction Rate",
-      stat: "1,000x",
-      subtitle: "Natural Rate",
-      description: "Current species extinction rates are 1,000 times higher than natural background rates, indicating a biodiversity crisis."
-    },
-    {
-      id: 12,
-      icon: <Recycle className="w-12 h-12" />,
-      title: "Global Recycling Rate",
-      stat: "9%",
-      subtitle: "Plastic Recycled",
-      description: "Only 9% of all plastic ever produced has been recycled, with most ending up in landfills or the environment."
-    }
+    // {
+    //   id: 11,
+    //   icon: <Mountain className="w-12 h-12" />,
+    //   title: "Species Extinction Rate",
+    //   stat: "1,000x",
+    //   subtitle: "Natural Rate",
+    //   description: "Current species extinction rates are 1,000 times higher than natural background rates, indicating a biodiversity crisis."
+    // },
+    // {
+    //   id: 12,
+    //   icon: <Recycle className="w-12 h-12" />,
+    //   title: "Global Recycling Rate",
+    //   stat: "9%",
+    //   subtitle: "Plastic Recycled",
+    //   description: "Only 9% of all plastic ever produced has been recycled, with most ending up in landfills or the environment."
+    // }
   ];
+  const handleRoute=(path)=>{
+    router.push(`/${path}`)
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -156,16 +161,14 @@ const EnvironmentalFacts = () => {
               Every small action contributes to a larger environmental impact. 
               Start with one change and build momentum for a sustainable future.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full transition-colors duration-300 shadow-sm hover:shadow-md">
+            <div  className="flex flex-wrap justify-center gap-4">
+              <button onClick={()=>handleRoute('aboutus')} className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full transition-colors duration-300 shadow-sm hover:shadow-md">
                 Learn More
               </button>
-              <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full transition-colors duration-300 shadow-sm hover:shadow-md">
+              <button onClick={()=>handleRoute('joinus')} className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full transition-colors duration-300 shadow-sm hover:shadow-md">
                 Get Involved
               </button>
-              <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full transition-colors duration-300 shadow-sm hover:shadow-md">
-                Share Facts
-              </button>
+             
             </div>
           </div>
         </div>

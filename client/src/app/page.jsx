@@ -6,6 +6,7 @@ import React from 'react'
 import NewsSection from '@/components/Landing_Page/NewsSection';
 import Footer from '@/components/Footer';
 import ImpactHeroSection from '@/components/Landing_Page/Intro';
+import StatsComponent from '@/components/Landing_Page/StatsCard';
 
 
 function page() {
@@ -14,6 +15,7 @@ function page() {
      <EnvironmentalWebsite/>
      <ImpactHeroSection/>
     <EnvironmentalFacts/>
+    <StatsComponent/>
     <NewsSection/>
     <Footer/>
     

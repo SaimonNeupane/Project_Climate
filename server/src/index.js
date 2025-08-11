@@ -1,5 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
+import connectDatabase from "./db.js";
 import { configDotenv } from "dotenv";
 import emailChecker from "../routes/EmailRoute.js";
 import bodyParser from "body-parser";
@@ -13,14 +13,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-await mongoose.connect(process.env.DATABSE_URL).then(() => {
-  console.log("successfully connected to database");
-});
+connectDatabase();
 app.get("/", (req, res) => {
   res.send("Server has started");
 });
 
-app.use("/email/", emailChecker);
+app.use("/", emailChecker);
 
 app.listen(5000, "0.0.0.0", () => {
   console.log("server currently running on port 5000");

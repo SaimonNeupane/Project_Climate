@@ -5,8 +5,14 @@ const baseUrl = axios.create({
 });
 
 export const memberAPI = (email) => {
-  return baseUrl.post("/email/verify", { email: email });
+  return baseUrl.post("/verify", { email: email, role: "member" });
 };
 export const volunteerAPI = (body) => {
-  return baseUrl.post("/email/send", body);
+  return baseUrl.post("/send", { type: "volunteer", ...body });
+};
+export const subscriptionAPI = (email) => {
+  return baseUrl.post("/verify", { email: email, role: "subscription" });
+};
+export const messageAPI = (body) => {
+  return baseUrl.post("/send", { type: "message", ...body });
 };

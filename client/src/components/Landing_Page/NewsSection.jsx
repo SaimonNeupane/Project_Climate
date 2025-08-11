@@ -229,11 +229,11 @@ export default function NewsSection() {
 
   if (loading) {
     return (
-      <div className="p-6 bg-gradient-to-br from-blue-50 via-green-50 to-blue-50 rounded-2xl">
+      <div className="p-6 bg-gradient-to-br from-blue-50 via-green-50 to-blue-50 rounded-2xl mt-6">
         <div className="flex items-center mb-6">
           <Globe className="w-6 h-6 text-blue-600 mr-2 animate-spin" />
           <h2 className="text-2xl font-bold text-gray-800">
-            🌍 The Guardian Environmental News
+            🌍  Environmental News
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -255,11 +255,11 @@ export default function NewsSection() {
 
   if (error && apiStatus === 'error') {
     return (
-      <div className="p-6 bg-gradient-to-br from-blue-50 via-green-50 to-blue-50 rounded-2xl">
+      <div className="p-6 bg-gradient-to-br from-blue-50 via-green-50 to-blue-50 rounded-2xl mt-6">
         <div className="flex items-center mb-6">
           <Globe className="w-6 h-6 text-blue-600 mr-2" />
           <h2 className="text-2xl font-bold text-gray-800">
-            🌍 The Guardian Environmental News
+            🌍 Environmental News
           </h2>
         </div>
         <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
@@ -280,12 +280,12 @@ export default function NewsSection() {
   }
 
   return (
-    <div className="p-6 bg-gradient-to-br from-blue-50 via-green-50 to-blue-50 rounded-2xl">
+    <div className="p-6 bg-gradient-to-br from-blue-50 via-green-50 to-blue-50 rounded-2xl mt-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <Globe className="w-6 h-6 text-blue-600 mr-2" />
           <h2 className="text-2xl font-bold text-gray-800">
-            🌍 The Guardian Environmental News
+            🌍  Environmental News
           </h2>
         </div>
         <div className="text-sm text-gray-500 flex items-center">
@@ -392,7 +392,7 @@ export default function NewsSection() {
       </div>
 
       {/* View More Button */}
-      <div className="mt-8 text-center">
+      {/* <div className="mt-8 text-center">
         <a
           href="https://www.theguardian.com/environment"
           target="_blank"
@@ -402,7 +402,7 @@ export default function NewsSection() {
           View More on Guardian Environment
           <ExternalLink className="w-4 h-4 ml-2" />
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }
