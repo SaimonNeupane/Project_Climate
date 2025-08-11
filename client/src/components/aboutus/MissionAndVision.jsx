@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { 
   FaQuestionCircle, 
@@ -21,6 +22,7 @@ import {
 const TabbedSections = () => {
   const [activeTab, setActiveTab] = useState('vision');
   const [expandedThematic, setExpandedThematic] = useState(null);
+  const router = useRouter();
 
   const tabs = [
     { id: 'vision', label: 'Our Vision', icon: FaEye },
@@ -126,7 +128,7 @@ const TabbedSections = () => {
   };
 
   const handleShareOurValues = () => {
-    // router.push('/joinus')
+    router.push('/joinus')
     console.log('Navigate to join us page');
   }
 

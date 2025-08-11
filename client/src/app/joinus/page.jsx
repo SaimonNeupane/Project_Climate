@@ -112,6 +112,9 @@ export default function GetInvolved() {
       console.error("Subscription failed:", error);
     }
   };
+  const handleClick=(path)=>{
+    router.push(`/${path}`)
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 pt-[100px]">
@@ -470,10 +473,8 @@ export default function GetInvolved() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-50 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl">
-              Get Started Today
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-green-600 transform hover:scale-105 transition-all duration-300">
+           
+            <button onClick={()=>handleClick('contacts')} className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-green-600 transform hover:scale-105 transition-all duration-300">
               Contact Us
             </button>
           </div>

@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { Linkedin, Mail, Instagram, ArrowLeft, Share, UserPlus, Eye, Users, Calendar, MapPin } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 // Enhanced team data with descriptions and additional info
 const teamData = [
@@ -279,7 +280,7 @@ const MeetOurCrew = () => {
   };
 
   const handleJoinCrew = () => {
-    // router.push('/joinus')
+    router.push('/joinus')
     console.log('Navigate to join us page');
   };
 
@@ -287,6 +288,7 @@ const MeetOurCrew = () => {
   if (selectedMember) {
     return <ProfilePage member={selectedMember} onBack={handleBackToTeam} />;
   }
+  const router=useRouter();
 
   // Show team overview
   return (
