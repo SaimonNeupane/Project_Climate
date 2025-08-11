@@ -4,14 +4,14 @@ import { MapPin, Calendar, Users, Leaf, TreePine, Droplets, Recycle, Sun, Heart,
 
 // Extended project data with detailed information
 const projectsData = {
-  projects: [
+   projects: [
     {
       id: "climate-creativity-context-2024",
       slug: "climate-creativity-context-2024",
       name: "Climate Creativity Context",
       title: "Climate Creativity Context 2024",
       description: "A comprehensive youth empowerment program designed to engage students in climate action through creative expression, critical thinking, and community involvement.",
-      shortDescription: "Youth empowerment initiative engaging 200+ students in climate action through creativity and community involvement.",
+      shortDescription: "The Climate Creativity Contest was a transformative environmental education and advocacy project held in Dakshinkali Municipality, Nepal, designed to empower young students to become changemakers for the planet.",
       image: "/projects/ClimateCreativityContext.jpg",
       category: "Empowerment",
       status: "Completed",
@@ -19,12 +19,11 @@ const projectsData = {
       timeline: "March 2024 - August 2024",
       duration: "6 months",
       beneficiaries: "200+ students",
-      budget: "$15,000",
       partners: ["British Council Nepal", "AYON", "Dakshinkali Municipality"],
       
       // Detailed content sections
       sectionTitle: "Empowering Youth for Climate Action",
-      overview: "The Climate Creativity Context was a groundbreaking initiative that brought together young minds from across Dakshinkali Municipality to address climate challenges through innovative and creative approaches. This program combined environmental education with artistic expression, enabling students to become active climate advocates in their communities.",
+      overview: "The Climate Creativity Contest was a transformative environmental education and advocacy project held in Dakshinkali Municipality, Nepal, designed to empower young students to become changemakers for the planet. Organized by the Climate Care Network (CCN) with major support from British Council Nepal, the Association of Youth Organisations Nepal (AYON), and the Dakshinkali Municipality, this initiative brought together creativity, knowledge, and action in a vibrant community setting.",
       
       objectives: [
         "Enhance climate literacy among young students",
@@ -36,37 +35,37 @@ const projectsData = {
       
       activities: [
         {
-          title: "Climate Science Workshops",
-          description: "Interactive sessions covering climate science fundamentals, local environmental challenges, and global climate impacts.",
-          duration: "2 weeks"
+          title: "Literature Competitions",
+          description: "Essays, poems, and creative writing highlighting environmental challenges and solutions.",
+      
         },
         {
-          title: "Creative Expression Projects",
-          description: "Students created art, music, poetry, and digital content to communicate climate messages effectively.",
-          duration: "4 weeks"
+          title: "Art Competitions",
+          description: " Visual storytelling through paintings and drawings on climate and environmental themes.",
+         
         },
         {
-          title: "Community Action Plans",
-          description: "Development of practical, student-led initiatives to address local environmental issues.",
-          duration: "3 weeks"
+          title: "Climate Quiz",
+          description: " An engaging test of environmental knowledge, climate facts, and sustainable practices.",
+    
         },
         {
           title: "Climate Advocacy Campaign",
           description: "Public presentations and community events where students shared their projects and climate solutions.",
-          duration: "2 weeks"
+          
         }
       ],
       
       impact: {
         direct: [
-          "200+ students directly participated",
+          "Empowered over 100 students to see themselves as environmental advocates.",
           "15 schools involved across the municipality",
-          "50+ creative projects developed",
-          "8 community action plans implemented"
+          "Inspired immediate action, with students launching their own clean-up drives, tree-planting events, and eco-club activities.",
+         
         ],
         indirect: [
-          "1,000+ community members reached through campaigns",
-          "Local government policy discussions initiated",
+          "Spread environmental awareness to families and community members through student-led discussions and initiatives.",
+          "Strengthened policy-level commitment to youth-led environmental activities, with municipal leaders pledging ongoing support.",
           "Ongoing student-led environmental clubs established",
           "Increased community awareness about climate issues"
         ]
@@ -90,67 +89,68 @@ const projectsData = {
       solutions: [
         "Developed multilingual educational materials",
         "Created flexible program schedules",
-        "Partnered with local teachers for translation support",
         "Established indoor alternatives for all activities"
       ],
       
       testimonials: [
-        {
-          name: "Rajesh Sharma",
-          role: "Principal, Dakshinkali Secondary School",
-          quote: "This program transformed how our students think about environmental issues. They became true climate ambassadors."
-        },
-        {
-          name: "Sita Poudel",
-          role: "Student Participant",
-          quote: "Through this program, I learned that young people can make a real difference in fighting climate change."
-        }
-      ],
+          { name: "Mr. Sailesh Manandar",
+            role: "Ward Chairperson",
+            quote: "This is the first spark to light thousands of candles for climate and environmental issues"
+           },
+      
+            {
+          name: " Palpal Rai",
+          role: "Student",
+          quote: "Participating in the Climate Creativity Contest opened my eyes to the urgency of climate action. It empowered me to make a difference in my community."
+        }],
+        
+   
       
       mediaGallery: [
         {
           type: "image",
-          url: "/projects/ccc-workshop.jpg",
-          caption: "Students participating in interactive climate science workshop"
+          url: "/firstProject/850A4695.jpg",
+          // caption: "Students participating in interactive climate science workshop"
         },
         {
           type: "image", 
-          url: "/projects/ccc-creative.jpg",
-          caption: "Creative expression session - students working on climate-themed artwork"
+          url: "/firstProject/850A4944.jpg",
+          // caption: "Creative expression session - students working on climate-themed artwork"
         },
         {
           type: "image",
-          url: "/projects/ccc-presentation.jpg", 
-          caption: "Final presentation ceremony with community members"
-        }
+          url: "/firstProject/850A5012.jpg", 
+          // caption: "Final presentation ceremony with community members"
+        },
+         {
+          type: "image",
+          url: "/firstProject/850A5342.jpg", 
+          // caption: "Final presentation ceremony with community members"
+        },
+         {
+          type: "image",
+          url: "/firstProject/850A5464.jpg", 
+          // caption: "Final presentation ceremony with community members"
+        },
+         {
+          type: "image",
+          url: "/firstProject/850A5494 - Copy.jpg", 
+          // caption: "Final presentation ceremony with community members"
+        },
+         {
+          type: "image",
+          url: "/firstProject/850A5513.jpg", 
+          // caption: "Final presentation ceremony with community members"
+        },
+         {
+          type: "image",
+          url: "/firstProject/Screenshot 2024-02-14 225639 - Copy.png", 
+          // caption: "Final presentation ceremony with community members"
+        },
+        
       ],
       
-      futurePhases: [
-        "Expansion to 5 additional municipalities in 2025",
-        "Development of digital platform for ongoing student collaboration", 
-        "Integration with national climate education curriculum",
-        "International student exchange program on climate action"
-      ],
       
-      relatedProjects: ["youth-climate-summit-2023", "green-schools-initiative"],
-      
-      downloadableResources: [
-        {
-          title: "Program Implementation Guide",
-          type: "PDF",
-          size: "2.3 MB"
-        },
-        {
-          title: "Student Project Examples",
-          type: "ZIP",
-          size: "15.7 MB"
-        },
-        {
-          title: "Impact Assessment Report",
-          type: "PDF", 
-          size: "4.1 MB"
-        }
-      ]
     }
     // Add more projects here with similar detailed structure
   ]
@@ -218,7 +218,7 @@ const ProjectCard = ({ project, onProjectClick }) => {
         <div className="space-y-2 mb-4 text-sm">
           <div className="flex items-center space-x-2 text-gray-500">
             <MapPin size={14} />
-            <span>{project.location}</span>
+            <span>{"   "}{project.location}</span>
           </div>
           <div className="flex items-center space-x-2 text-gray-500">
             <Calendar size={14} />
@@ -316,23 +316,11 @@ const ProjectDetailPage = ({ project, onBack }) => {
                   <div className="text-3xl font-bold text-white">{project.partners.length}</div>
                   <div className="text-emerald-200 text-sm">Partners</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-white">{project.budget}</div>
-                  <div className="text-emerald-200 text-sm">Investment</div>
-                </div>
+               
               </div>
               
               {/* Action Buttons */}
-              <div className="flex space-x-4 mt-8">
-                <button className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-semibold hover:bg-emerald-50 transition-colors flex items-center space-x-2">
-                  <Share2 size={20} />
-                  <span>Share Project</span>
-                </button>
-                <button className="border-2 border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-emerald-600 transition-colors flex items-center space-x-2">
-                  <Download size={20} />
-                  <span>Download Report</span>
-                </button>
-              </div>
+             
             </div>
             
             <div className="relative">
@@ -410,10 +398,7 @@ const ProjectDetailPage = ({ project, onBack }) => {
                       <span className="text-gray-500">Timeline:</span>
                       <span className="text-gray-800 font-medium">{project.timeline}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Budget:</span>
-                      <span className="text-gray-800 font-medium">{project.budget}</span>
-                    </div>
+                   
                     <div className="flex justify-between">
                       <span className="text-gray-500">Status:</span>
                       <span className="text-gray-800 font-medium">{project.status}</span>
@@ -537,23 +522,7 @@ const ProjectDetailPage = ({ project, onBack }) => {
             </div>
             
             {/* Downloadable Resources */}
-            <div className="mt-12">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">Download Resources</h3>
-              <div className="grid md:grid-cols-3 gap-4">
-                {project.downloadableResources.map((resource, index) => (
-                  <button key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-left group">
-                    <div className="flex items-center justify-between mb-2">
-                      <Download className="text-emerald-500" size={24} />
-                      <span className="text-xs text-gray-500">{resource.size}</span>
-                    </div>
-                    <h4 className="font-bold text-gray-800 group-hover:text-emerald-600 transition-colors">
-                      {resource.title}
-                    </h4>
-                    <p className="text-sm text-gray-500">{resource.type}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
+            
           </div>
         )}
       </div>
