@@ -1,5 +1,6 @@
 import express from "express";
-import connectDatabase from "../db.js";
+
+import connectDatabase from "./db.js";
 import { configDotenv } from "dotenv";
 import emailChecker from "../routes/EmailRoute.js";
 import bodyParser from "body-parser";
