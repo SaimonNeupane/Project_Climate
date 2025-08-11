@@ -14,21 +14,40 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-connectDatabase();
+// Global connection promise to avoid multiple connections
+let dbConnectionPromise = null;
+
+const initializeDatabase = async () => {
+  if (!dbConnectionPromise) {
+    dbConnectionPromise = connectDatabase();
+  }
+
+  try {
+    await dbConnectionPromise;
+    console.log("Database connection established");
+  } catch (error) {
+    console.error("Database connection failed:", error);
+    dbConnectionPromise = null; // Reset on failure
+    // Don't throw - let the app start anyway
+  }
+};
+
+// Initialize DB connection immediately but don't await it
+initializeDatabase();
 
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to the Climate Project API" });
+  res.status(200).json({
+    message: "Welcome to the Climate Project API",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 app.use("/", emailChecker);
 
-// Wrap with serverless-http for Vercel
-export default serverless(app);
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error("Application error:", err);
+  res.status(500).json({ error: "Internal server error" });
+});
 
-// Uncomment this if you want to run locally
-// if (process.env.NODE_ENV !== "production") {
-//   const PORT = process.env.PORT || 5000;
-//   app.listen(PORT, () => {
-//     console.log(`Server running locally on port ${PORT}`);
-//   });
-// }
+export default serverless(app);

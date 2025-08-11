@@ -1,25 +1,37 @@
 import mongoose from "mongoose";
-import User from "../models/email.js";
-import { configDotenv } from "dotenv";
-configDotenv();
-console.log(process.env.DATABSE_URL);
-async function connectDatabase() {
+
+let isConnected = false;
+
+const connectDatabase = async () => {
+  // If already connected, reuse the connection
+  if (isConnected && mongoose.connection.readyState === 1) {
+    console.log("Reusing existing MongoDB connection");
+    return mongoose.connection;
+  }
+
   try {
-    // Connect to MongoDB first
-    await mongoose.connect(process.env.DATABSE_URL, {
-      // Modern connection options
-      serverSelectionTimeoutMS: 30000, // 30 seconds
-      socketTimeoutMS: 45000, // 45 seconds
+    console.log("Connecting to MongoDB...");
+
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // 5 second timeout
+      socketTimeoutMS: 45000,
+      maxPoolSize: 10, // Maintain up to 10 socket connections
+      minPoolSize: 1, // Maintain at least 1 socket connection
+      maxIdleTimeMS: 30000, // Close connections after 30 seconds of inactivity
+      bufferMaxEntries: 0, // Disable mongoose buffering
     });
 
-    console.log("Connected to MongoDB");
+    isConnected = true;
+    console.log("MongoDB connected successfully");
 
-    // Now sync indexes after connection is established
-    await User.syncIndexes();
-    console.log("User indexes synced");
+    return conn;
   } catch (error) {
-    console.error("Database connection failed:", error);
-    process.exit(1);
+    console.error("MongoDB connection error:", error);
+    isConnected = false;
+    throw error;
   }
-}
+};
+
 export default connectDatabase;
