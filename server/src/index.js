@@ -1,5 +1,4 @@
 import express from "express";
-
 import connectDatabase from "./db.js";
 import { configDotenv } from "dotenv";
 import emailChecker from "../routes/EmailRoute.js";
@@ -23,10 +22,10 @@ app.get("/", (req, res) => {
 
 app.use("/", emailChecker);
 
-// ✅ For Vercel — must be the default export
+// Wrap with serverless-http for Vercel
 export default serverless(app);
 
-// ✅ For Local
+// Uncomment this if you want to run locally
 // if (process.env.NODE_ENV !== "production") {
 //   const PORT = process.env.PORT || 5000;
 //   app.listen(PORT, () => {
