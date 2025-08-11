@@ -1,5 +1,5 @@
 import express from "express";
-import connectDatabase from "../db.js"; // note: adjust path if needed
+import connectDatabase from "../db.js";
 import { configDotenv } from "dotenv";
 import emailChecker from "../routes/EmailRoute.js";
 import bodyParser from "body-parser";
@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
 
 app.use("/", emailChecker);
 
-// ✅ For Vercel
-export const handler = serverless(app);
+// ✅ For Vercel — must be the default export
+export default serverless(app);
 
 // ✅ For Local
 // if (process.env.NODE_ENV !== "production") {
