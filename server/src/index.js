@@ -13,8 +13,6 @@ const app = express();
 app.use(cors());
 app.use(morgan("dev"));
 
-// IMPORTANT: Use bodyParser middleware here, and handle its potential errors
-// The `json()` method can throw a SyntaxError for malformed JSON, which we need to catch.
 app.use(bodyParser.json());
 
 let isConnected = false;
@@ -77,6 +75,9 @@ app.use((err, req, res, next) => {
 app.use((err, req, res, next) => {
   console.error("Application error:", err);
   res.status(500).json({ error: "Internal server error" });
+});
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
 
 export default serverless(app);
