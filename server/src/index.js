@@ -14,30 +14,44 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-// MongoDB connection (re-use cached connection in serverless)
 let isConnected = false;
 const connectDB = async () => {
   if (isConnected) return;
-  await mongoose
-    .connect(process.env.DATABASE_URL)
-    .then(() => {
-      isConnected = true;
-      console.log("MongoDB connected");
-    })
-    .catch((err) => console.error("MongoDB connection error:", err));
+  console.log(
+    "Attempting to connect to MongoDB with URL:",
+    process.env.DATABASE_URL
+  );
+  try {
+    await mongoose.connect(process.env.DATABASE_URL);
+    isConnected = true;
+    console.log("MongoDB connected");
+  } catch (err) {
+    console.error("MongoDB connection error:", err.message);
+  }
 };
 
-app.use(async (req, res, next) => {
+// Connect on startup
+(async () => {
   await connectDB();
+})();
+
+// Middleware to check connection status
+app.use((req, res, next) => {
+  if (!isConnected) {
+    return res.status(503).json({ error: "Database unavailable" });
+  }
   next();
 });
 
 app.get("/", (req, res) => {
+  console.log("Root endpoint hit");
   res.status(200).json({
     message: "Welcome to the Climate Project API",
     timestamp: new Date().toISOString(),
   });
 });
+
+app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.use("/", emailChecker);
 
@@ -47,12 +61,4 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal server error" });
 });
 
-// Export for Vercel
 export default serverless(app);
-
-// Only listen locally
-// if (process.env.NODE_ENV !== "production") {
-//   app.listen(process.env.PORT || 3000, () => {
-//     console.log(`Server running on port ${process.env.PORT || 3000}`);
-//   });
-// }
