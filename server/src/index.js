@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
 import bodyParser from "body-parser";
-import serverless from "serverless-http";
 import emailChecker from "../routes/EmailRoute.js";
 
 dotenv.config();
@@ -52,26 +51,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/favicon.ico", (req, res) => res.status(204).end());
-
 app.use("/", emailChecker);
 
-// --- START of added error-handling middleware ---
-// This specific middleware will catch the BadRequestError from bodyParser
-// and send a proper 400 response, preventing a timeout.
-app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
-    console.error("Bad request error:", err.message);
-    return res.status(400).json({
-      status: "Fail",
-      message: "Invalid JSON payload or content length mismatch.",
-    });
-  }
-  next(err); // Pass other errors to the next handler
-});
-// --- END of added error-handling middleware ---
-
-// Default error handler for all other errors
 app.use((err, req, res, next) => {
   console.error("Application error:", err);
   res.status(500).json({ error: "Internal server error" });
@@ -79,5 +60,3 @@ app.use((err, req, res, next) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
-
-export default serverless(app);
