@@ -19,7 +19,7 @@ let isConnected = false;
 const connectDB = async () => {
   if (isConnected) return;
   await mongoose
-    .connect(process.env.DATABSE_URL)
+    .connect(process.env.DATABASE_URL)
     .then(() => {
       isConnected = true;
       console.log("MongoDB connected");
