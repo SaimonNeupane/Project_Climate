@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const baseUrl = axios.create({
-  baseURL: "http://192.168.1.109:5000",
+  baseURL: "https://project-climate-tact.vercel.app/",
 });
 
 export const memberAPI = (email) => {
