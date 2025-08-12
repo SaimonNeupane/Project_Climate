@@ -152,42 +152,7 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Contact Info */}
-          <div className="p-6 border-t border-gray-100 space-y-4">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">
-              Get in Touch
-            </h3>
-
-            <div className="flex items-center space-x-3 text-gray-600">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <Phone className="w-4 h-4 text-green-600" />
-              </div>
-              <div>
-                <p className="font-medium">+1 (555) ECO-CARE</p>
-                <p className="text-sm text-gray-500">Call us anytime</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-3 text-gray-600">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <Mail className="w-4 h-4 text-green-600" />
-              </div>
-              <div>
-                <p className="font-medium">hello@climatecare.org</p>
-                <p className="text-sm text-gray-500">Send us a message</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-3 text-gray-600">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <MapPin className="w-4 h-4 text-green-600" />
-              </div>
-              <div>
-                <p className="font-medium">Green Building, Eco City</p>
-                <p className="text-sm text-gray-500">Visit our office</p>
-              </div>
-            </div>
-          </div>
+          
 
           {/* CTA Button */}
           <div className="p-6">
