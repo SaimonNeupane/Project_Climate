@@ -6,7 +6,7 @@
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "10mb",
-        "nodeVersion": "18.17.1"
+        "nodeVersion": "22.x"
       }
     }
   ],
