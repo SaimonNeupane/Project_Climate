@@ -1,5 +1,5 @@
 import express from "express";
-import { config } from "dotenv";
+import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import serverless from "serverless-http";
 import emailChecker from "../routes/EmailRoute.js";
 
-config();
+dotenv.config();
 
 const app = express();
 app.use(cors());
